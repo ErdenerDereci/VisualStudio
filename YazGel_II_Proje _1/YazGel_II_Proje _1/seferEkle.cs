@@ -14,7 +14,7 @@ namespace YazGel_II_Proje__1
     public partial class seferEkle : Form
     {
         
-        string seferNo = "";
+        
        
         public seferEkle()
         {
@@ -40,7 +40,7 @@ namespace YazGel_II_Proje__1
         {
             SeferListeyeAtClass ListeyeAt = new SeferListeyeAtClass();
             int i = 0;
-            int sfno = seferNoDondur() ;
+            int sfno;
             
            
            
@@ -55,9 +55,9 @@ namespace YazGel_II_Proje__1
 
                 if (temp == null)
                 {
-                    seferNo = "s" + sfno;
+                    sfno = seferNoDondur();
                     MessageBox.Show(""+tarih.Text+" dosyası oluşturuldu..");
-                    dosyayaYaz(seferNo, nereden.Text + "-" + nereye.Text, tarih.Text, saat.Text, Convert.ToInt32(kapasite.Text), Convert.ToInt32(biletFiyati.Text), plaka.Text, kaptan.Text);
+                    dosyayaYaz(sfno.ToString(), nereden.Text + "-" + nereye.Text, tarih.Text, saat.Text, Convert.ToInt32(kapasite.Text), Convert.ToInt32(biletFiyati.Text), plaka.Text, kaptan.Text);
                     dosyayaYazSeferNo(sfno);
                     MessageBox.Show("Ekleme başarılı.. ");
                     dosyayaYazSeferTarih(tarih.Text);
@@ -76,8 +76,8 @@ namespace YazGel_II_Proje__1
 
                 if (temp.dugumCek(i) == null)
                 {
-                        seferNo = "s" + sfno;
-                        dosyayaYaz(seferNo, nereden.Text + "-" + nereye.Text, tarih.Text, saat.Text, Convert.ToInt32(kapasite.Text), Convert.ToInt32(biletFiyati.Text), plaka.Text, kaptan.Text);
+                        sfno= seferNoDondur();
+                        dosyayaYaz(sfno.ToString(), nereden.Text + "-" + nereye.Text, tarih.Text, saat.Text, Convert.ToInt32(kapasite.Text), Convert.ToInt32(biletFiyati.Text), plaka.Text, kaptan.Text);
                         dosyayaYazSeferNo(sfno);
                         MessageBox.Show("Ekleme başarılı.. ");
                         dosyayaYazSeferTarih(tarih.Text);
@@ -182,6 +182,41 @@ namespace YazGel_II_Proje__1
         {
             
         }
+        private int seferNoSilinendenDondur()
+        {
+            List<string> liste = new List<string>();
+            string dosya_yolu = @"C:\Users\fed\Desktop\YazGel_Txt_Dosyalari\SilinenSeferNo.txt";
+            FileStream fs = new FileStream(dosya_yolu, FileMode.Open, FileAccess.Read);
+
+            StreamReader sr = new StreamReader(fs);
+            string yazi = sr.ReadLine();
+            while (yazi != null)
+            {
+                liste.Add(yazi);
+                yazi = sr.ReadLine();
+            }
+
+            sr.Close();
+            fs.Close();
+            File.Delete(dosya_yolu);
+            yazi = liste[0];
+            liste.RemoveAt(0);
+
+            StreamWriter sw = new StreamWriter(@"C:\Users\fed\Desktop\YazGel_Txt_Dosyalari\SilinenSeferNo.txt", true);
+
+            for (int i = 0; i < liste.Count; i++)
+            {
+                sw.WriteLine(liste[i]);
+            }
+            sw.Close();
+            if (liste.Count == 0)
+            {
+                File.Delete(dosya_yolu);
+            }
+            return Convert.ToInt32(yazi);
+
+        }
+
         private int seferNoDondur()
         {
             int donecek = 0;
@@ -191,26 +226,8 @@ namespace YazGel_II_Proje__1
            
             if (File.Exists(dosya_yolu2))
             {
-                FileStream f1 = new FileStream(dosya_yolu2, FileMode.Open, FileAccess.Read);
 
-                StreamReader sr = new StreamReader(f1);
-                string yazi=sr.ReadLine();
-                while (yazi != null)
-                {
-                    silinen.Add(yazi);
-                    yazi = sr.ReadLine();
-                }
-                yazi = silinen[0];
-                silinen.RemoveAt(0);
-                StreamWriter sw = new StreamWriter(dosya_yolu2, true);
-                File.Delete(dosya_yolu2);
-                for(int i=0; i < silinen.Count; i++)
-                {
-                    sw.WriteLine(silinen[i]);
-                }
-                sr.Close();
-                f1.Close();
-                return Convert.ToInt32(yazi);
+                return seferNoSilinendenDondur();
 
             }
             else
@@ -221,14 +238,21 @@ namespace YazGel_II_Proje__1
 
                     StreamReader s2 = new StreamReader(f2);
                     string yazi2=s2.ReadLine();
-                    string aa="";
+                    List<int> aa = new List<int>();
 
                     while (yazi2 != null)
                     {
-                        aa = yazi2;
+                        aa.Add(Convert.ToInt32(yazi2));
                         yazi2 = s2.ReadLine();
                     }
-                    donecek= Convert.ToInt32(aa);
+                    for(int i = 0; i < aa.Count; i++)
+                    {
+                        if (donecek < aa[i])
+                        {
+                            donecek = aa[i];
+                        }
+                    }
+
                     donecek++;
                     f2.Close();
                     s2.Close();
@@ -243,7 +267,20 @@ namespace YazGel_II_Proje__1
             }
         }
 
-        
+        private void kapasite_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar); //Sadece rakam girmek için https://www.muratyazici.com/c-textboxa-sadece-harf-girme-sadece-sayi-girme.html
+        }
 
+        private void biletFiyati_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar); //rakam https://www.muratyazici.com/c-textboxa-sadece-harf-girme-sadece-sayi-girme.html
+        }
+
+        private void kaptan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar)
+                && !char.IsSeparator(e.KeyChar); //sadece harf https://www.muratyazici.com/c-textboxa-sadece-harf-girme-sadece-sayi-girme.html
+        }
     }
 }

@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Emin_Misiniz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Emin_Misiniz.Designer.cs">
+      <DependentUpon>Emin_Misiniz.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,9 @@
     </Compile>
     <Compile Include="TarihClasslari\TarihDugum.cs" />
     <Compile Include="TarihClasslari\TarihListesi.cs" />
+    <EmbeddedResource Include="Emin_Misiniz.resx">
+      <DependentUpon>Emin_Misiniz.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -133,6 +133,7 @@
             this.kapasite.Name = "kapasite";
             this.kapasite.Size = new System.Drawing.Size(100, 20);
             this.kapasite.TabIndex = 10;
+            this.kapasite.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.kapasite_KeyPress);
             // 
             // biletFiyati
             // 
@@ -140,6 +141,7 @@
             this.biletFiyati.Name = "biletFiyati";
             this.biletFiyati.Size = new System.Drawing.Size(100, 20);
             this.biletFiyati.TabIndex = 11;
+            this.biletFiyati.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.biletFiyati_KeyPress);
             // 
             // plaka
             // 
@@ -154,6 +156,7 @@
             this.kaptan.Name = "kaptan";
             this.kaptan.Size = new System.Drawing.Size(100, 20);
             this.kaptan.TabIndex = 13;
+            this.kaptan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.kaptan_KeyPress);
             // 
             // seferadd
             // 
