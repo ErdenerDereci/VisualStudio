@@ -113,9 +113,10 @@
             // tarih
             // 
             this.tarih.CalendarMonthBackground = System.Drawing.SystemColors.WindowText;
+            this.tarih.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.tarih.Location = new System.Drawing.Point(77, 70);
             this.tarih.Name = "tarih";
-            this.tarih.Size = new System.Drawing.Size(200, 20);
+            this.tarih.Size = new System.Drawing.Size(100, 20);
             this.tarih.TabIndex = 8;
             this.tarih.Value = new System.DateTime(2020, 2, 24, 0, 0, 0, 0);
             // 

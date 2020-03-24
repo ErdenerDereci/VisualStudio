@@ -13,6 +13,9 @@ namespace YazGel_II_Proje__1
 {
     public partial class seferEkle : Form
     {
+        
+        string seferNo = "";
+       
         public seferEkle()
         {
             InitializeComponent();
@@ -37,7 +40,7 @@ namespace YazGel_II_Proje__1
         {
             SeferListeyeAtClass ListeyeAt = new SeferListeyeAtClass();
             int i = 0;
-
+            int sfno = seferNoDondur() ;
             
            
            
@@ -52,9 +55,10 @@ namespace YazGel_II_Proje__1
 
                 if (temp == null)
                 {
+                    seferNo = "s" + sfno;
                     MessageBox.Show(""+tarih.Text+" dosyası oluşturuldu..");
-                    dosyayaYaz(1, nereden.Text + "-" + nereye.Text, tarih.Text, saat.Text, Convert.ToInt32(kapasite.Text), Convert.ToInt32(biletFiyati.Text), plaka.Text, kaptan.Text);
-
+                    dosyayaYaz(seferNo, nereden.Text + "-" + nereye.Text, tarih.Text, saat.Text, Convert.ToInt32(kapasite.Text), Convert.ToInt32(biletFiyati.Text), plaka.Text, kaptan.Text);
+                    dosyayaYazSeferNo(sfno);
                     MessageBox.Show("Ekleme başarılı.. ");
                     dosyayaYazSeferTarih(tarih.Text);
                 }
@@ -72,22 +76,22 @@ namespace YazGel_II_Proje__1
 
                 if (temp.dugumCek(i) == null)
                 {
-                   
-                        dosyayaYaz(1, nereden.Text + "-" + nereye.Text, tarih.Text, saat.Text, Convert.ToInt32(kapasite.Text), Convert.ToInt32(biletFiyati.Text), plaka.Text, kaptan.Text);
-
+                        seferNo = "s" + sfno;
+                        dosyayaYaz(seferNo, nereden.Text + "-" + nereye.Text, tarih.Text, saat.Text, Convert.ToInt32(kapasite.Text), Convert.ToInt32(biletFiyati.Text), plaka.Text, kaptan.Text);
+                        dosyayaYazSeferNo(sfno);
                         MessageBox.Show("Ekleme başarılı.. ");
                         dosyayaYazSeferTarih(tarih.Text);
                     
                 }
                 }
             }
-           
-            
 
+
+            
 
         }
         
-        private void dosyayaYaz(int seferNo,string guzergah,string tarih,string saat,int kapasite,int biletFiyati, string plaka,string kaptan)
+        private void dosyayaYaz(string seferNo,string guzergah,string tarih,string saat,int kapasite,int biletFiyati, string plaka,string kaptan)
         {
             
             
@@ -133,38 +137,113 @@ namespace YazGel_II_Proje__1
             string yazi = "";
             string dosya_yolu = @"C:\Users\fed\Desktop\YazGel_Txt_Dosyalari\Tarihler.txt";
 
-           
 
-            FileStream f1 = new FileStream(dosya_yolu, FileMode.Open, FileAccess.Read);
-
-            StreamReader sr = new StreamReader(f1);
-            yazi = sr.ReadLine();
-            while (yazi != null)
+            if (File.Exists(dosya_yolu))
             {
-                if (yazi == tarih)
-                {
-                   
-                    sr.Close();
-                    f1.Close();
-                    return true;
-                   
-                }
+                FileStream f1 = new FileStream(dosya_yolu, FileMode.Open, FileAccess.Read);
+
+                StreamReader sr = new StreamReader(f1);
                 yazi = sr.ReadLine();
+                while (yazi != null)
+                {
+                    if (yazi == tarih)
+                    {
+
+                        sr.Close();
+                        f1.Close();
+                        return true;
+
+                    }
+                    yazi = sr.ReadLine();
+                }
+                sr.Close();
+                f1.Close();
             }
-            sr.Close();
-            f1.Close();
+            
             StreamWriter sw = new StreamWriter(dosya_yolu, true);
             sw.WriteLine(tarih);
             sw.Close();
 
             
-            sr.Close();
+          
             
             return false;
+        }
+        private void dosyayaYazSeferNo(int i)
+        {
+            string dosya_yolu = @"C:\Users\fed\Desktop\YazGel_Txt_Dosyalari\SeferNo.txt";
+            StreamWriter sw = new StreamWriter(dosya_yolu,true);
+
+            sw.WriteLine(i);
+            sw.Close();
+
         }
         private void seferEkle_Load(object sender, EventArgs e)
         {
             
         }
+        private int seferNoDondur()
+        {
+            int donecek = 0;
+            List<string> silinen = new List<string>();
+            string dosya_yolu = @"C:\Users\fed\Desktop\YazGel_Txt_Dosyalari\SeferNo.txt";
+            string dosya_yolu2 = @"C:\Users\fed\Desktop\YazGel_Txt_Dosyalari\SilinenSeferNo.txt";
+           
+            if (File.Exists(dosya_yolu2))
+            {
+                FileStream f1 = new FileStream(dosya_yolu2, FileMode.Open, FileAccess.Read);
+
+                StreamReader sr = new StreamReader(f1);
+                string yazi=sr.ReadLine();
+                while (yazi != null)
+                {
+                    silinen.Add(yazi);
+                    yazi = sr.ReadLine();
+                }
+                yazi = silinen[0];
+                silinen.RemoveAt(0);
+                StreamWriter sw = new StreamWriter(dosya_yolu2, true);
+                File.Delete(dosya_yolu2);
+                for(int i=0; i < silinen.Count; i++)
+                {
+                    sw.WriteLine(silinen[i]);
+                }
+                sr.Close();
+                f1.Close();
+                return Convert.ToInt32(yazi);
+
+            }
+            else
+            {
+                if (File.Exists(dosya_yolu))
+                {
+                    FileStream f2 = new FileStream(dosya_yolu, FileMode.Open, FileAccess.Read);
+
+                    StreamReader s2 = new StreamReader(f2);
+                    string yazi2=s2.ReadLine();
+                    string aa="";
+
+                    while (yazi2 != null)
+                    {
+                        aa = yazi2;
+                        yazi2 = s2.ReadLine();
+                    }
+                    donecek= Convert.ToInt32(aa);
+                    donecek++;
+                    f2.Close();
+                    s2.Close();
+                    return donecek;
+
+                }
+                else
+                {
+                   
+                    return 1;
+                }
+            }
+        }
+
+        
+
     }
 }

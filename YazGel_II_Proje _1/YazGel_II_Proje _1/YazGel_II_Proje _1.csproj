@@ -52,11 +52,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="KoltukBilgileriDugum.cs" />
-    <Compile Include="KoltukBilgilerListe.cs" />
+    <Compile Include="KoltukClasslari\KoltukBilgileriDugum.cs" />
+    <Compile Include="KoltukClasslari\KoltukBilgilerListe.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SeferBilgisiDugum.cs" />
+    <Compile Include="seferClasslari\SeferBilgisiDugum.cs" />
     <Compile Include="seferEkle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,14 +69,16 @@
     <Compile Include="seferIslemleri.Designer.cs">
       <DependentUpon>seferIslemleri.cs</DependentUpon>
     </Compile>
-    <Compile Include="SeferListesi.cs" />
-    <Compile Include="SeferListeyeAtClass.cs" />
+    <Compile Include="seferClasslari\SeferListesi.cs" />
+    <Compile Include="seferClasslari\SeferListeyeAtClass.cs" />
     <Compile Include="SeferSil.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SeferSil.Designer.cs">
       <DependentUpon>SeferSil.cs</DependentUpon>
     </Compile>
+    <Compile Include="TarihClasslari\TarihDugum.cs" />
+    <Compile Include="TarihClasslari\TarihListesi.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -111,5 +113,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

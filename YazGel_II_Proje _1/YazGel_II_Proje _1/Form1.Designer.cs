@@ -116,6 +116,7 @@
             this.button8.TabIndex = 7;
             this.button8.Text = "Güncel Seferler";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button7
             // 
@@ -125,6 +126,7 @@
             this.button7.TabIndex = 6;
             this.button7.Text = "Geçmiş Seferler";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 
@@ -134,6 +136,7 @@
             this.button6.TabIndex = 5;
             this.button6.Text = "Tüm Seferler";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button1
             // 
@@ -176,7 +179,6 @@
         private System.Windows.Forms.Button sefer;
         private System.Windows.Forms.Button bilet;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -184,6 +186,7 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
