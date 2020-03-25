@@ -92,17 +92,30 @@ namespace YazGel_II_Proje__1
 
         private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex > -1)
+            if (sil.Checked == true)
             {
-               
+                if (e.RowIndex > -1)
+                {
 
+
+
+                    Emin_Misiniz emin = new Emin_Misiniz();
+                    emin.kaptan.Text = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
+                    emin.seferno.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    emin.tarih.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    emin.ShowDialog();
+                }
+            }
+            else
+            {
                 
-                Emin_Misiniz emin = new Emin_Misiniz();
+                KaptanGuncelle emin = new KaptanGuncelle();
                 emin.kaptan.Text = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
                 emin.seferno.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                 emin.tarih.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
                 emin.ShowDialog();
             }
+           
         }
 
         private void SeferSil_Activated(object sender, EventArgs e)

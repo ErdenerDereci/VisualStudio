@@ -98,7 +98,7 @@ namespace YazGel_II_Proje__1
 
 
         }
-        public int Duzenle(string seferNo,string yeniSeferNo, string saat, string guzergah, string kapasite, string tarih, string plaka, string kaptan)
+        public SeferBilgisiDugum KaptanDuzenle(string seferNo,string kaptan)
         {
             SeferBilgisiDugum temp;
 
@@ -111,18 +111,13 @@ namespace YazGel_II_Proje__1
 
             if (temp == null)
             {
-                return 0; // Aranan eleman listede yok
+               return null; // Aranan eleman listede yok
             }
             else
             {
-                temp.seferNo = yeniSeferNo;
-                temp.saat = saat;
-                temp.guzergah = guzergah;
-                temp.kapasite = kapasite;
-                temp.tarih = tarih;
-                temp.plaka = plaka;
-                temp.kaptan = kaptan;
-                return 1; // Duzenleme başarılı
+
+                return temp;
+                // Duzenleme başarılı
             }
         }
         public SeferBilgisiDugum dugumCek(int  sayac)
@@ -137,6 +132,7 @@ namespace YazGel_II_Proje__1
             return temp;
            
         }
+        
         public int Count()
         {
             SeferBilgisiDugum temp;

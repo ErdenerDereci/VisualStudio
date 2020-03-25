@@ -21,6 +21,8 @@ namespace YazGel_II_Proje__1
         private void sefer_Click(object sender, EventArgs e)
         {
             panel1.Visible = true;
+            tumSefer.BackColor = Color.AliceBlue;
+            tumSeferDataGridGuncelle();
             sefer.BackColor = Color.AliceBlue;
             bilet.BackColor = Color.LightGray;
         }
@@ -43,72 +45,72 @@ namespace YazGel_II_Proje__1
 
         private void tumSefer_Click(object sender, EventArgs e)
         {
-            int seferSayisi = 0;
+            //int seferSayisi = 0;
             tumSefer.BackColor = Color.AliceBlue;
             gecmisSefer.BackColor = Color.LightGray;
             guncelSefer.BackColor = Color.LightGray;
-            dataGridView1.Rows.Clear();
-            SeferListeyeAtClass listeyeAt = new SeferListeyeAtClass();
-            
-            TarihListesi tarihtemp = new TarihListesi();
-            
-            string dosya_yolu = @"C:\Users\fed\Desktop\YazGel_Txt_Dosyalari\Tarihler.txt";
+            //dataGridView1.Rows.Clear();
+            //SeferListeyeAtClass listeyeAt = new SeferListeyeAtClass();
 
-            if (File.Exists(dosya_yolu))
-            {
-                FileStream fs = new FileStream(dosya_yolu, FileMode.Open, FileAccess.Read);
+            //TarihListesi tarihtemp = new TarihListesi();
 
-                StreamReader sw = new StreamReader(fs);
+            //string dosya_yolu = @"C:\Users\fed\Desktop\YazGel_Txt_Dosyalari\Tarihler.txt";
 
-                string yazi = sw.ReadLine();
-                while (yazi != null)
-                {
-                    tarihtemp.Ekle(yazi,listeyeAt.seferListeyeAt("",yazi));
-                    yazi = sw.ReadLine();
-                }
+            //if (File.Exists(dosya_yolu))
+            //{
+            //    FileStream fs = new FileStream(dosya_yolu, FileMode.Open, FileAccess.Read);
 
-                sw.Close();
-                fs.Close();
+            //    StreamReader sw = new StreamReader(fs);
 
-                dataGridView1.ColumnCount = 9;
-                dataGridView1.Columns[0].Name = "Sefer No";
-                dataGridView1.Columns[1].Name = "Güzergah";
-                dataGridView1.Columns[2].Name = "Tarih";
-                dataGridView1.Columns[3].Name = "Saat";
-                dataGridView1.Columns[4].Name = "Kapasite";
-                dataGridView1.Columns[5].Name = "Bilet Fiyatı";
-                dataGridView1.Columns[6].Name = "Plaka";
-                dataGridView1.Columns[7].Name = "Kaptan";
-                dataGridView1.Columns[8].Name = "Yer Var mı?";
+            //    string yazi = sw.ReadLine();
+            //    while (yazi != null)
+            //    {
+            //        tarihtemp.Ekle(yazi,listeyeAt.seferListeyeAt("",yazi));
+            //        yazi = sw.ReadLine();
+            //    }
 
-                string[] dizi = new string[8];
+            //    sw.Close();
+            //    fs.Close();
 
-                
-                for(int i=0; i<tarihtemp.Count(); i++)
-                {
-                    seferSayisi += tarihtemp.dugumCek(i).sefer.Count();
-                    for (int j =0; j<tarihtemp.dugumCek(i).sefer.Count(); j++)
-                    {
-                        dizi[0] = tarihtemp.dugumCek(i).sefer.dugumCek(j).seferNo;
-                        dizi[1] = tarihtemp.dugumCek(i).sefer.dugumCek(j).guzergah;
-                        dizi[2] = tarihtemp.dugumCek(i).sefer.dugumCek(j).tarih;
-                        dizi[3] = tarihtemp.dugumCek(i).sefer.dugumCek(j).saat;
-                        dizi[4] = tarihtemp.dugumCek(i).sefer.dugumCek(j).kapasite;
-                        dizi[5] = tarihtemp.dugumCek(i).sefer.dugumCek(j).fiyat.ToString();
-                        dizi[6] = tarihtemp.dugumCek(i).sefer.dugumCek(j).plaka;
-                        dizi[7] = tarihtemp.dugumCek(i).sefer.dugumCek(j).kaptan;
+            //    dataGridView1.ColumnCount = 9;
+            //    dataGridView1.Columns[0].Name = "Sefer No";
+            //    dataGridView1.Columns[1].Name = "Güzergah";
+            //    dataGridView1.Columns[2].Name = "Tarih";
+            //    dataGridView1.Columns[3].Name = "Saat";
+            //    dataGridView1.Columns[4].Name = "Kapasite";
+            //    dataGridView1.Columns[5].Name = "Bilet Fiyatı";
+            //    dataGridView1.Columns[6].Name = "Plaka";
+            //    dataGridView1.Columns[7].Name = "Kaptan";
+            //    dataGridView1.Columns[8].Name = "Yer Var mı?";
+
+            //    string[] dizi = new string[8];
 
 
-                        dataGridView1.Rows.Add(dizi);
-                    }
-                }
-                sefers.Text = seferSayisi.ToString();
-            }
-            else
-            {
-                MessageBox.Show("Sefer veri tabanı boş..!!");
-            }
-           
+            //    for(int i=0; i<tarihtemp.Count(); i++)
+            //    {
+            //        seferSayisi += tarihtemp.dugumCek(i).sefer.Count();
+            //        for (int j =0; j<tarihtemp.dugumCek(i).sefer.Count(); j++)
+            //        {
+            //            dizi[0] = tarihtemp.dugumCek(i).sefer.dugumCek(j).seferNo;
+            //            dizi[1] = tarihtemp.dugumCek(i).sefer.dugumCek(j).guzergah;
+            //            dizi[2] = tarihtemp.dugumCek(i).sefer.dugumCek(j).tarih;
+            //            dizi[3] = tarihtemp.dugumCek(i).sefer.dugumCek(j).saat;
+            //            dizi[4] = tarihtemp.dugumCek(i).sefer.dugumCek(j).kapasite;
+            //            dizi[5] = tarihtemp.dugumCek(i).sefer.dugumCek(j).fiyat.ToString();
+            //            dizi[6] = tarihtemp.dugumCek(i).sefer.dugumCek(j).plaka;
+            //            dizi[7] = tarihtemp.dugumCek(i).sefer.dugumCek(j).kaptan;
+
+
+            //            dataGridView1.Rows.Add(dizi);
+            //        }
+            //    }
+            //    sefers.Text = seferSayisi.ToString();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Sefer veri tabanı boş..!!");
+            //}
+            tumSeferDataGridGuncelle();
 
         }
         private bool bosMu(string x)
@@ -125,9 +127,277 @@ namespace YazGel_II_Proje__1
 
         private void gecmisSefer_Click(object sender, EventArgs e)
         {
-            int seferSayisi = 0;
+            //int seferSayisi = 0;
             tumSefer.BackColor = Color.LightGray;
             gecmisSefer.BackColor = Color.AliceBlue;
+            guncelSefer.BackColor = Color.LightGray;
+           
+            //SeferListeyeAtClass listeyeAt = new SeferListeyeAtClass();
+
+            //TarihListesi tarihtemp = new TarihListesi();
+
+            //string dosya_yolu = @"C:\Users\fed\Desktop\YazGel_Txt_Dosyalari\Tarihler.txt";
+
+            //if (File.Exists(dosya_yolu))
+            //{
+            //    FileStream fs = new FileStream(dosya_yolu, FileMode.Open, FileAccess.Read);
+
+            //    StreamReader sw = new StreamReader(fs);
+
+            //    string yazi = sw.ReadLine();
+            //    while (yazi != null)
+            //    {
+            //        DateTime tarih = Convert.ToDateTime(yazi);
+            //        if(tarih< DateTime.Today.Date)
+            //        {
+            //            tarihtemp.Ekle(yazi, listeyeAt.seferListeyeAt("", yazi));
+            //        }
+
+            //        yazi = sw.ReadLine();
+            //    }
+
+            //    sw.Close();
+            //    fs.Close();
+
+            //    dataGridView1.ColumnCount = 9;
+            //    dataGridView1.Columns[0].Name = "Sefer No";
+            //    dataGridView1.Columns[1].Name = "Güzergah";
+            //    dataGridView1.Columns[2].Name = "Tarih";
+            //    dataGridView1.Columns[3].Name = "Saat";
+            //    dataGridView1.Columns[4].Name = "Kapasite";
+            //    dataGridView1.Columns[5].Name = "Bilet Fiyatı";
+            //    dataGridView1.Columns[6].Name = "Plaka";
+            //    dataGridView1.Columns[7].Name = "Kaptan";
+            //    dataGridView1.Columns[8].Name = "Yer Var mı?";
+
+            //    string[] dizi = new string[8];
+
+
+            //    for (int i = 0; i < tarihtemp.Count(); i++)
+            //    {
+            //        seferSayisi += tarihtemp.dugumCek(i).sefer.Count();
+            //        for (int j = 0; j < tarihtemp.dugumCek(i).sefer.Count(); j++)
+            //        {
+            //            dizi[0] = tarihtemp.dugumCek(i).sefer.dugumCek(j).seferNo;
+            //            dizi[1] = tarihtemp.dugumCek(i).sefer.dugumCek(j).guzergah;
+            //            dizi[2] = tarihtemp.dugumCek(i).sefer.dugumCek(j).tarih;
+            //            dizi[3] = tarihtemp.dugumCek(i).sefer.dugumCek(j).saat;
+            //            dizi[4] = tarihtemp.dugumCek(i).sefer.dugumCek(j).kapasite;
+            //            dizi[5] = tarihtemp.dugumCek(i).sefer.dugumCek(j).fiyat.ToString();
+            //            dizi[6] = tarihtemp.dugumCek(i).sefer.dugumCek(j).plaka;
+            //            dizi[7] = tarihtemp.dugumCek(i).sefer.dugumCek(j).kaptan;
+
+
+            //            dataGridView1.Rows.Add(dizi);
+            //        }
+            //    }
+
+
+            //    sefers.Text = seferSayisi.ToString();
+
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Sefer veri tabanı boş..!!");
+            //}
+            gecmisSeferDataGridGuncelle();
+        }
+       
+        private void guncelSefer_Click(object sender, EventArgs e)
+        {
+            //int seferSayisi = 0;
+            tumSefer.BackColor = Color.LightGray;
+            gecmisSefer.BackColor = Color.LightGray;
+            guncelSefer.BackColor = Color.AliceBlue;
+            //dataGridView1.Rows.Clear();
+            //SeferListeyeAtClass listeyeAt = new SeferListeyeAtClass();
+
+            //TarihListesi tarihtemp = new TarihListesi();
+
+            //string dosya_yolu = @"C:\Users\fed\Desktop\YazGel_Txt_Dosyalari\Tarihler.txt";
+
+            //if (File.Exists(dosya_yolu))
+            //{
+            //    FileStream fs = new FileStream(dosya_yolu, FileMode.Open, FileAccess.Read);
+
+            //    StreamReader sw = new StreamReader(fs);
+
+            //    string yazi = sw.ReadLine();
+            //    while (yazi != null)
+            //    {
+            //        DateTime tarih = Convert.ToDateTime(yazi);
+            //        if (tarih >= DateTime.Today.Date)
+            //        {
+            //            tarihtemp.Ekle(yazi, listeyeAt.seferListeyeAt("", yazi));
+            //        }
+
+            //        yazi = sw.ReadLine();
+            //    }
+
+            //    sw.Close();
+            //    fs.Close();
+
+            //    dataGridView1.ColumnCount = 9;
+            //    dataGridView1.Columns[0].Name = "Sefer No";
+            //    dataGridView1.Columns[1].Name = "Güzergah";
+            //    dataGridView1.Columns[2].Name = "Tarih";
+            //    dataGridView1.Columns[3].Name = "Saat";
+            //    dataGridView1.Columns[4].Name = "Kapasite";
+            //    dataGridView1.Columns[5].Name = "Bilet Fiyatı";
+            //    dataGridView1.Columns[6].Name = "Plaka";
+            //    dataGridView1.Columns[7].Name = "Kaptan";
+            //    dataGridView1.Columns[8].Name = "Yer Var mı?";
+
+            //    string[] dizi = new string[8];
+
+
+            //    for (int i = 0; i < tarihtemp.Count(); i++)
+            //    {
+            //        seferSayisi += tarihtemp.dugumCek(i).sefer.Count();
+            //        for (int j = 0; j < tarihtemp.dugumCek(i).sefer.Count(); j++)
+            //        {
+            //            dizi[0] = tarihtemp.dugumCek(i).sefer.dugumCek(j).seferNo;
+            //            dizi[1] = tarihtemp.dugumCek(i).sefer.dugumCek(j).guzergah;
+            //            dizi[2] = tarihtemp.dugumCek(i).sefer.dugumCek(j).tarih;
+            //            dizi[3] = tarihtemp.dugumCek(i).sefer.dugumCek(j).saat;
+            //            dizi[4] = tarihtemp.dugumCek(i).sefer.dugumCek(j).kapasite;
+            //            dizi[5] = tarihtemp.dugumCek(i).sefer.dugumCek(j).fiyat.ToString();
+            //            dizi[6] = tarihtemp.dugumCek(i).sefer.dugumCek(j).plaka;
+            //            dizi[7] = tarihtemp.dugumCek(i).sefer.dugumCek(j).kaptan;
+
+
+            //            dataGridView1.Rows.Add(dizi);
+            //        }
+            //    }
+
+            //    sefers.Text = seferSayisi.ToString();
+
+
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Sefer veri tabanı boş..!!");
+            //}
+            guncelSeferDataGridGuncelle();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SeferSil f1 = new SeferSil();
+            if (bosMu(@"C:\Users\fed\Desktop\YazGel_Txt_Dosyalari\Tarihler.txt"))
+            {
+                f1.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Sefer veri tabanı boş..!!");
+            }
+           
+
+
+        }
+
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+
+            //int seferSayisi = 0;
+            //dataGridView1.Rows.Clear();
+            //SeferListeyeAtClass listeyeAt = new SeferListeyeAtClass();
+
+            //TarihListesi tarihtemp = new TarihListesi();
+
+            //string dosya_yolu = @"C:\Users\fed\Desktop\YazGel_Txt_Dosyalari\Tarihler.txt";
+
+            //if (File.Exists(dosya_yolu))
+            //{
+            //    FileStream fs = new FileStream(dosya_yolu, FileMode.Open, FileAccess.Read);
+
+            //    StreamReader sw = new StreamReader(fs);
+
+            //    string yazi = sw.ReadLine();
+            //    while (yazi != null)
+            //    {
+            //        tarihtemp.Ekle(yazi, listeyeAt.seferListeyeAt("", yazi));
+            //        yazi = sw.ReadLine();
+            //    }
+
+            //    sw.Close();
+            //    fs.Close();
+
+            //    dataGridView1.ColumnCount = 9;
+            //    dataGridView1.Columns[0].Name = "Sefer No";
+            //    dataGridView1.Columns[1].Name = "Güzergah";
+            //    dataGridView1.Columns[2].Name = "Tarih";
+            //    dataGridView1.Columns[3].Name = "Saat";
+            //    dataGridView1.Columns[4].Name = "Kapasite";
+            //    dataGridView1.Columns[5].Name = "Bilet Fiyatı";
+            //    dataGridView1.Columns[6].Name = "Plaka";
+            //    dataGridView1.Columns[7].Name = "Kaptan";
+            //    dataGridView1.Columns[8].Name = "Yer Var mı?";
+
+            //    string[] dizi = new string[8];
+
+
+            //    for (int i = 0; i < tarihtemp.Count(); i++)
+            //    {
+            //        seferSayisi += tarihtemp.dugumCek(i).sefer.Count();
+            //        for (int j = 0; j < tarihtemp.dugumCek(i).sefer.Count(); j++)
+            //        {
+            //            dizi[0] = tarihtemp.dugumCek(i).sefer.dugumCek(j).seferNo;
+            //            dizi[1] = tarihtemp.dugumCek(i).sefer.dugumCek(j).guzergah;
+            //            dizi[2] = tarihtemp.dugumCek(i).sefer.dugumCek(j).tarih;
+            //            dizi[3] = tarihtemp.dugumCek(i).sefer.dugumCek(j).saat;
+            //            dizi[4] = tarihtemp.dugumCek(i).sefer.dugumCek(j).kapasite;
+            //            dizi[5] = tarihtemp.dugumCek(i).sefer.dugumCek(j).fiyat.ToString();
+            //            dizi[6] = tarihtemp.dugumCek(i).sefer.dugumCek(j).plaka;
+            //            dizi[7] = tarihtemp.dugumCek(i).sefer.dugumCek(j).kaptan;
+
+
+            //            dataGridView1.Rows.Add(dizi);
+            //        }
+            //    }
+
+
+            //    sefers.Text = seferSayisi.ToString();
+
+            //}
+            //else
+            //{
+
+
+
+            //}
+
+
+            if (tumSefer.BackColor == Color.AliceBlue)
+            {
+                tumSeferDataGridGuncelle();
+            }
+            else if (guncelSefer.BackColor == Color.AliceBlue)
+            {
+                guncelSeferDataGridGuncelle();
+            }
+            else
+            {
+                gecmisSeferDataGridGuncelle();
+            }
+
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            sefer.BackColor = Color.AliceBlue;
+            tumSefer.BackColor = Color.AliceBlue;
+            tumSeferDataGridGuncelle();
+        }
+
+
+        private void tumSeferDataGridGuncelle()
+        {
+            int seferSayisi = 0;
+            tumSefer.BackColor = Color.AliceBlue;
+            gecmisSefer.BackColor = Color.LightGray;
             guncelSefer.BackColor = Color.LightGray;
             dataGridView1.Rows.Clear();
             SeferListeyeAtClass listeyeAt = new SeferListeyeAtClass();
@@ -141,16 +411,11 @@ namespace YazGel_II_Proje__1
                 FileStream fs = new FileStream(dosya_yolu, FileMode.Open, FileAccess.Read);
 
                 StreamReader sw = new StreamReader(fs);
-                
+
                 string yazi = sw.ReadLine();
                 while (yazi != null)
                 {
-                    DateTime tarih = Convert.ToDateTime(yazi);
-                    if(tarih< DateTime.Today.Date)
-                    {
-                        tarihtemp.Ekle(yazi, listeyeAt.seferListeyeAt("", yazi));
-                    }
-                        
+                    tarihtemp.Ekle(yazi, listeyeAt.seferListeyeAt("", yazi));
                     yazi = sw.ReadLine();
                 }
 
@@ -189,18 +454,14 @@ namespace YazGel_II_Proje__1
                         dataGridView1.Rows.Add(dizi);
                     }
                 }
-
-
                 sefers.Text = seferSayisi.ToString();
-
             }
             else
             {
-                MessageBox.Show("Sefer veri tabanı boş..!!");
+                
             }
         }
-
-        private void guncelSefer_Click(object sender, EventArgs e)
+        private void guncelSeferDataGridGuncelle()
         {
             int seferSayisi = 0;
             tumSefer.BackColor = Color.LightGray;
@@ -273,29 +534,15 @@ namespace YazGel_II_Proje__1
             }
             else
             {
-                MessageBox.Show("Sefer veri tabanı boş..!!");
+               
             }
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            SeferSil f1 = new SeferSil();
-            if (bosMu(@"C:\Users\fed\Desktop\YazGel_Txt_Dosyalari\Tarihler.txt"))
-            {
-                f1.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Sefer veri tabanı boş..!!");
-            }
-           
-
-
-        }
-
-        private void Form1_Activated(object sender, EventArgs e)
+        private void gecmisSeferDataGridGuncelle()
         {
             int seferSayisi = 0;
+            tumSefer.BackColor = Color.LightGray;
+            gecmisSefer.BackColor = Color.AliceBlue;
+            guncelSefer.BackColor = Color.LightGray;
             dataGridView1.Rows.Clear();
             SeferListeyeAtClass listeyeAt = new SeferListeyeAtClass();
 
@@ -312,7 +559,12 @@ namespace YazGel_II_Proje__1
                 string yazi = sw.ReadLine();
                 while (yazi != null)
                 {
-                    tarihtemp.Ekle(yazi, listeyeAt.seferListeyeAt("", yazi));
+                    DateTime tarih = Convert.ToDateTime(yazi);
+                    if (tarih < DateTime.Today.Date)
+                    {
+                        tarihtemp.Ekle(yazi, listeyeAt.seferListeyeAt("", yazi));
+                    }
+
                     yazi = sw.ReadLine();
                 }
 
@@ -358,12 +610,8 @@ namespace YazGel_II_Proje__1
             }
             else
             {
-
-
-
+                
             }
         }
-
-
     }
 }
