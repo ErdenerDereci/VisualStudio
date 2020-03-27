@@ -55,9 +55,9 @@ namespace YazGel_II_Proje__1
                     for (int j = 1; j < Convert.ToInt32(temp.dugumCek(i).kapasite) + 1; j++)
                     {
                         sw.WriteLine("Koltuk No: '" + j + "'");
-                        sw.WriteLine("Yolcu Adı: ''");
-                        sw.WriteLine("Cinsiyeti: ''");
-                        sw.WriteLine("Durum: ''");
+                        sw.WriteLine("Yolcu Adı: 'Boş'");
+                        sw.WriteLine("Cinsiyeti: 'Boş'");
+                        sw.WriteLine("Durum: 'Boş'");
                         sw.WriteLine("");
                     }
                     sw.WriteLine("----------------------------------------------------------------------------------------------------");
