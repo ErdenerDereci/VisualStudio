@@ -25,10 +25,11 @@ namespace YazGel_II_Proje__1
                
                 temp.yolcuAdi = yolcuAdi;
                 temp.yolcuCinsiyeti = yolcuCinsiyeti;
+                temp.sonraki = new KoltukBilgileriDugum();
             }
             else
             {
-                temp.sonraki = new KoltukBilgileriDugum();
+                
                 temp = temp.sonraki;
                 goto tag;
             }
@@ -104,6 +105,41 @@ namespace YazGel_II_Proje__1
                 return 1; // Duzenleme başarılı
             }
         }
+        public int Count()
+        {
+            KoltukBilgileriDugum temp;
+            temp = head;
 
+            int i = -1;
+            while(temp!=null)
+            {
+                temp = temp.sonraki;
+                i++;
+            }
+            return i;
+        }
+        public KoltukBilgileriDugum dugumCek(int i)
+        {
+            KoltukBilgileriDugum temp = head;
+            for(int j =0; j<i; j++)
+            {
+                temp = temp.sonraki;
+            }
+            return temp;
+        }
+        public int kacKoltukDolu()
+        {
+            KoltukBilgileriDugum x = head;
+            int sayac=0;
+            while(x!=null)
+            {
+                if(x.durum != "Boş" && x.durum!=null)
+                {
+                    sayac++;
+                }
+                x = x.sonraki;
+            }
+            return sayac;
+        }
     }
 }

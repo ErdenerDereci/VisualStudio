@@ -66,6 +66,12 @@
     </Compile>
     <Compile Include="KoltukClasslari\KoltukBilgileriDugum.cs" />
     <Compile Include="KoltukClasslari\KoltukBilgilerListe.cs" />
+    <Compile Include="KoltukListele.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KoltukListele.Designer.cs">
+      <DependentUpon>KoltukListele.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="seferClasslari\SeferBilgisiDugum.cs" />
@@ -99,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KaptanGuncelle.resx">
       <DependentUpon>KaptanGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KoltukListele.resx">
+      <DependentUpon>KoltukListele.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
