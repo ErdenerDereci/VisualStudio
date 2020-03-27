@@ -294,7 +294,7 @@ namespace YazGel_II_Proje__1
 
             TarihListesi tarihtemp = new TarihListesi();
 
-            string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\" + "'Tarihler.txt'";
+            string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\" + "Tarihler.txt";
 
             if (File.Exists(dosya_yolu))
             {
