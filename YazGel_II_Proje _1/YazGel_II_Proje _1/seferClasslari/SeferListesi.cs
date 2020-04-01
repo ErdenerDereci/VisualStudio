@@ -132,6 +132,17 @@ namespace YazGel_II_Proje__1
             return temp;
            
         }
+        public SeferBilgisiDugum seferNoDugumCek(string x)
+        {
+            SeferBilgisiDugum temp;
+            temp = head;
+
+            while (temp.seferNo != x)
+            {
+                temp = temp.sonraki;
+            }
+            return temp;
+        }
         
         public int Count()
         {
@@ -145,7 +156,23 @@ namespace YazGel_II_Proje__1
             }
             return i;
         }
+        public bool silinirMi(string seferNo)
+        {
+            SeferBilgisiDugum temp=seferNoDugumCek(seferNo);
 
+            for (int i=0; i<temp.koltukBilgileri.Count(); i++)
+            {
+                if (temp.koltukBilgileri.dugumCek(i).durum != "Boş")
+                {
+                    return false;
+                }
+                
+            }
+            return true;
+
+            
+
+        }
         //public string saatCek( string seferNo)
         //{
         //    SeferBilgisiDugum temp;

@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BiletKes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BiletKes.Designer.cs">
+      <DependentUpon>BiletKes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Biletİptal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Biletİptal.Designer.cs">
+      <DependentUpon>Biletİptal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Emin_Misiniz.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +109,12 @@
     </Compile>
     <Compile Include="TarihClasslari\TarihDugum.cs" />
     <Compile Include="TarihClasslari\TarihListesi.cs" />
+    <EmbeddedResource Include="BiletKes.resx">
+      <DependentUpon>BiletKes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Biletİptal.resx">
+      <DependentUpon>Biletİptal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Emin_Misiniz.resx">
       <DependentUpon>Emin_Misiniz.cs</DependentUpon>
     </EmbeddedResource>

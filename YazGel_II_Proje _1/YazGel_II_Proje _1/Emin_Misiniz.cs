@@ -21,9 +21,9 @@ namespace YazGel_II_Proje__1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SeferSil a = new SeferSil();
+            
             seferSil(seferno.Text, tarih.Text);
-            silineniYolla(seferno.Text);
+            
             
             this.Close();
             
@@ -40,57 +40,65 @@ namespace YazGel_II_Proje__1
             SeferListeyeAtClass listeyeAt = new SeferListeyeAtClass();
             SeferListesi temp = listeyeAt.seferListeyeAt("", tarih);
             string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\"+tarih+".txt";
-
-            File.Delete(dosya_yolu);
-            
-            temp.Sil(seferNo);
-            StreamWriter sw = new StreamWriter(dosya_yolu, true);
-            for (int i=0; i<temp.Count(); i++)
+            if (!temp.silinirMi(seferNo))
             {
-                
-
-               
-                //Yazma işlemi için bir StreamWriter nesnesi oluşturduk.
-                sw.WriteLine("********** Sefer Bilgileri **********");
-                sw.WriteLine("");
-                sw.WriteLine("Sefer No: '" + temp.dugumCek(i).seferNo + "'");
-                sw.WriteLine("Güzergah: '" + temp.dugumCek(i).guzergah + "'");
-                sw.WriteLine("Tarih: '" + temp.dugumCek(i).tarih + "'");
-                sw.WriteLine("Saat: '" + temp.dugumCek(i).saat + "'");
-                sw.WriteLine("Kapasite: '" + temp.dugumCek(i).kapasite + "'");
-                sw.WriteLine("Bilet Fiyatı: '" + temp.dugumCek(i).fiyat + "'");
-                sw.WriteLine("Plaka: '" + temp.dugumCek(i).plaka + "'");
-                sw.WriteLine("Kaptan: '" + temp.dugumCek(i).kaptan + "'");
-                sw.WriteLine("");
-                sw.WriteLine("********** Koltuk Bilgileri **********");
-                sw.WriteLine("");
-
-                for (int j = 1; j < Convert.ToInt32( temp.dugumCek(i).kapasite) + 1; j++)
-                {
-                    sw.WriteLine("Koltuk No: '" + j + "'");
-                    sw.WriteLine("Yolcu Adı: ''");
-                    sw.WriteLine("Cinsiyeti: ''");
-                    sw.WriteLine("Durum: ''");
-                    sw.WriteLine("");
-                }
-                sw.WriteLine("----------------------------------------------------------------------------------------------------");
-                
+                MessageBox.Show("Sefer silinemez..Bilet kesilmiş.!!");
             }
-            sw.Close();
-            FileStream fs = new FileStream(dosya_yolu, FileMode.Open, FileAccess.Read);
-
-            StreamReader sr = new StreamReader(fs);
-
-            if (sr.ReadLine() == null)
+            else
             {
-                sr.Close();
-                
+                silineniYolla(seferNo);
                 File.Delete(dosya_yolu);
-                tarihSil(tarih);
+
+                temp.Sil(seferNo);
+                StreamWriter sw = new StreamWriter(dosya_yolu, true);
+                for (int i = 0; i < temp.Count(); i++)
+                {
+
+
+
+                    //Yazma işlemi için bir StreamWriter nesnesi oluşturduk.
+                    sw.WriteLine("********** Sefer Bilgileri **********");
+                    sw.WriteLine("");
+                    sw.WriteLine("Sefer No: '" + temp.dugumCek(i).seferNo + "'");
+                    sw.WriteLine("Güzergah: '" + temp.dugumCek(i).guzergah + "'");
+                    sw.WriteLine("Tarih: '" + temp.dugumCek(i).tarih + "'");
+                    sw.WriteLine("Saat: '" + temp.dugumCek(i).saat + "'");
+                    sw.WriteLine("Kapasite: '" + temp.dugumCek(i).kapasite + "'");
+                    sw.WriteLine("Bilet Fiyatı: '" + temp.dugumCek(i).fiyat + "'");
+                    sw.WriteLine("Plaka: '" + temp.dugumCek(i).plaka + "'");
+                    sw.WriteLine("Kaptan: '" + temp.dugumCek(i).kaptan + "'");
+                    sw.WriteLine("");
+                    sw.WriteLine("********** Koltuk Bilgileri **********");
+                    sw.WriteLine("");
+
+                    for (int j = 0; j < Convert.ToInt32(temp.dugumCek(i).kapasite); j++)
+                    {
+                        sw.WriteLine("Koltuk No: '" + temp.dugumCek(i).koltukBilgileri.dugumCek(j).numara + "'");
+                        sw.WriteLine("Yolcu Adı: '" + temp.dugumCek(i).koltukBilgileri.dugumCek(j).yolcuAdi + "'");
+                        sw.WriteLine("Cinsiyeti: '" + temp.dugumCek(i).koltukBilgileri.dugumCek(j).yolcuCinsiyeti + "'");
+                        sw.WriteLine("Durum: '" + temp.dugumCek(i).koltukBilgileri.dugumCek(j).durum + "'");
+                        sw.WriteLine("");
+                    }
+                    sw.WriteLine("----------------------------------------------------------------------------------------------------");
+
+                }
+                sw.Close();
+                FileStream fs = new FileStream(dosya_yolu, FileMode.Open, FileAccess.Read);
+
+                StreamReader sr = new StreamReader(fs);
+
+                if (sr.ReadLine() == null)
+                {
+                    sr.Close();
+
+                    File.Delete(dosya_yolu);
+                    tarihSil(tarih);
+                }
+                sr.Close();
+                MessageBox.Show("Silme işlemi başarılı..");
+
             }
-            sr.Close();
-            MessageBox.Show("Silme işlemi başarılı..");
-            
+
         }
         private void tarihSil(string tarih)
         {

@@ -11,25 +11,27 @@ using System.Windows.Forms;
 
 namespace YazGel_II_Proje__1
 {
-    public partial class KaptanGuncelle : Form
+    public partial class BiletKes : Form
     {
-        public KaptanGuncelle()
+        public BiletKes()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (kaptanText.Text == null)
+            if (yolcuAdi.Text == "")
             {
-                MessageBox.Show("Lütfen kaptan adı giriniz!");
+                MessageBox.Show("Alanlar doldurulmak zorundadır!!");
             }
-            else { 
-            SeferListeyeAtClass listeyeAt = new SeferListeyeAtClass();
-            SeferListesi temp = listeyeAt.seferListeyeAt("", tarih.Text);
-                string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\" + tarih.Text + ".txt";
-
-                temp.KaptanDuzenle(seferno.Text, kaptanText.Text).kaptan = kaptanText.Text;
+            else
+            {
+                SeferListeyeAtClass listeyeAt = new SeferListeyeAtClass();
+                SeferListesi temp = listeyeAt.seferListeyeAt("", label6.Text);
+                string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\" + label6.Text + ".txt";
+                temp.seferNoDugumCek(label7.Text).koltukBilgileri.dugumCek(Convert.ToInt32(label5.Text) - 1).yolcuAdi = yolcuAdi.Text;
+                temp.seferNoDugumCek(label7.Text).koltukBilgileri.dugumCek(Convert.ToInt32(label5.Text) - 1).yolcuCinsiyeti = cinsiyeti.Text;
+                temp.seferNoDugumCek(label7.Text).koltukBilgileri.dugumCek(Convert.ToInt32(label5.Text) - 1).durum = durum.Text;
                 File.Delete(dosya_yolu);
                 StreamWriter sw = new StreamWriter(dosya_yolu, true);
                 for (int i = 0; i < temp.Count(); i++)
@@ -54,7 +56,7 @@ namespace YazGel_II_Proje__1
 
                     for (int j = 0; j < Convert.ToInt32(temp.dugumCek(i).kapasite); j++)
                     {
-                        sw.WriteLine("Koltuk No: '" + temp.dugumCek(i).koltukBilgileri.dugumCek(j).numara+ "'");
+                        sw.WriteLine("Koltuk No: '" + temp.dugumCek(i).koltukBilgileri.dugumCek(j).numara + "'");
                         sw.WriteLine("Yolcu Adı: '" + temp.dugumCek(i).koltukBilgileri.dugumCek(j).yolcuAdi + "'");
                         sw.WriteLine("Cinsiyeti: '" + temp.dugumCek(i).koltukBilgileri.dugumCek(j).yolcuCinsiyeti + "'");
                         sw.WriteLine("Durum: '" + temp.dugumCek(i).koltukBilgileri.dugumCek(j).durum + "'");
@@ -64,14 +66,11 @@ namespace YazGel_II_Proje__1
 
                 }
                 sw.Close();
-                MessageBox.Show("'"+kaptan.Text+"' verisi '"+kaptanText.Text+"' verisine güncellendi.!! ");
-            this.Close();
-            }
-        }
+                MessageBox.Show("Bilet Kesildi!! ");
+                this.Close();
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            }
+            
         }
     }
 }

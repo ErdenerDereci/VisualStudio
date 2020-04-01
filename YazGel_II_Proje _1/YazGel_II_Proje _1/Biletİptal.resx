@@ -117,10 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label5.Text" xml:space="preserve">
-    <value>   Bilet kesmek veya bilet iptali için önce güncel seferler tablosundan çift tıklayarak sefer seçiniz. Seçtikten sonra yanda
-
-koltuk listesi açılacaktır. İşlem yapmak istediğiniz koltuga çift tıklayarak açılan pencerede işleminizi yapabilirsiniz.
-</value>
-  </data>
 </root>

@@ -118,7 +118,7 @@
             this.tarih.Name = "tarih";
             this.tarih.Size = new System.Drawing.Size(100, 20);
             this.tarih.TabIndex = 8;
-            this.tarih.Value = new System.DateTime(2020, 2, 24, 0, 0, 0, 0);
+            this.tarih.Value = new System.DateTime(2021, 5, 1, 0, 0, 0, 0);
             // 
             // saat
             // 

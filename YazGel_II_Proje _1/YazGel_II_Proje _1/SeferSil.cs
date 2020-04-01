@@ -44,7 +44,7 @@ namespace YazGel_II_Proje__1
                 sw.Close();
                 fs.Close();
 
-                dataGridView1.ColumnCount = 9;
+                dataGridView1.ColumnCount = 8;
                 dataGridView1.Columns[0].Name = "Sefer No";
                 dataGridView1.Columns[1].Name = "Güzergah";
                 dataGridView1.Columns[2].Name = "Tarih";
@@ -53,7 +53,7 @@ namespace YazGel_II_Proje__1
                 dataGridView1.Columns[5].Name = "Bilet Fiyatı";
                 dataGridView1.Columns[6].Name = "Plaka";
                 dataGridView1.Columns[7].Name = "Kaptan";
-                dataGridView1.Columns[8].Name = "Yer Var mı?";
+                
 
                 string[] dizi = new string[8];
 
@@ -143,7 +143,7 @@ namespace YazGel_II_Proje__1
                 sw.Close();
                 fs.Close();
 
-                dataGridView1.ColumnCount = 9;
+                dataGridView1.ColumnCount = 8;
                 dataGridView1.Columns[0].Name = "Sefer No";
                 dataGridView1.Columns[1].Name = "Güzergah";
                 dataGridView1.Columns[2].Name = "Tarih";
@@ -152,7 +152,7 @@ namespace YazGel_II_Proje__1
                 dataGridView1.Columns[5].Name = "Bilet Fiyatı";
                 dataGridView1.Columns[6].Name = "Plaka";
                 dataGridView1.Columns[7].Name = "Kaptan";
-                dataGridView1.Columns[8].Name = "Yer Var mı?";
+                
 
                 string[] dizi = new string[8];
 
