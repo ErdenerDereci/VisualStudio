@@ -94,7 +94,7 @@ namespace YazGel_II_Proje__1
         private void dosyayaYaz(string seferNo,string guzergah,string tarih,string saat,int kapasite,int biletFiyati, string plaka,string kaptan)
         {
 
-            string dosya_yolu = System.Windows.Forms.Application.StartupPath  +"\\YazGelTxt\\"+ tarih + ".txt";
+            string dosya_yolu = System.Windows.Forms.Application.StartupPath +"\\"+ tarih + ".txt";
             
             
             StreamWriter sw = new StreamWriter(dosya_yolu,true);
@@ -135,7 +135,7 @@ namespace YazGel_II_Proje__1
         private bool dosyayaYazSeferTarih(string tarih)
         {
             string yazi = "";
-            string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\"+"Tarihler.txt";
+            string dosya_yolu = System.Windows.Forms.Application.StartupPath+"\\" +"Tarihler.txt";
 
 
             if (File.Exists(dosya_yolu))
@@ -171,7 +171,7 @@ namespace YazGel_II_Proje__1
         }
         private void dosyayaYazSeferNo(int i)
         {
-            string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\"+"SeferNo.txt";
+            string dosya_yolu = System.Windows.Forms.Application.StartupPath +"\\"+"SeferNo.txt";
             StreamWriter sw = new StreamWriter(dosya_yolu,true);
 
             sw.WriteLine(i);
@@ -180,12 +180,12 @@ namespace YazGel_II_Proje__1
         }
         private void seferEkle_Load(object sender, EventArgs e)
         {
-            
+            nereden.BackColor = Color.White;
         }
         private int seferNoSilinendenDondur()
         {
             List<string> liste = new List<string>();
-            string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\"+"SilinenSeferNo.txt";
+            string dosya_yolu = System.Windows.Forms.Application.StartupPath +"\\"+"SilinenSeferNo.txt";
             FileStream fs = new FileStream(dosya_yolu, FileMode.Open, FileAccess.Read);
 
             StreamReader sr = new StreamReader(fs);
@@ -221,8 +221,8 @@ namespace YazGel_II_Proje__1
         {
             int donecek = 0;
             List<string> silinen = new List<string>();
-            string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\"+"SeferNo.txt";
-            string dosya_yolu2 = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\"+"SilinenSeferNo.txt";
+            string dosya_yolu = System.Windows.Forms.Application.StartupPath +"\\"+"SeferNo.txt";
+            string dosya_yolu2 = System.Windows.Forms.Application.StartupPath+"\\" +"SilinenSeferNo.txt";
 
             if (File.Exists(dosya_yolu2))
             {

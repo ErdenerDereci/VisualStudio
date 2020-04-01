@@ -99,7 +99,7 @@ namespace YazGel_II_Proje__1
         private void button2_Click(object sender, EventArgs e)
         {
             SeferSil f1 = new SeferSil();
-            if (bosMu(System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\" +"Tarihler.txt"))
+            if (bosMu(System.Windows.Forms.Application.StartupPath  +"\\"+"Tarihler.txt"))
             {
                 f1.ShowDialog();
             }
@@ -185,7 +185,7 @@ namespace YazGel_II_Proje__1
 
             TarihListesi tarihtemp = new TarihListesi();
 
-            string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\" + "Tarihler.txt";
+            string dosya_yolu = System.Windows.Forms.Application.StartupPath +"\\" + "Tarihler.txt";
 
             if (File.Exists(dosya_yolu))
             {
@@ -253,7 +253,7 @@ namespace YazGel_II_Proje__1
 
             TarihListesi tarihtemp = new TarihListesi();
 
-            string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\" + "Tarihler.txt";
+            string dosya_yolu = System.Windows.Forms.Application.StartupPath  +"\\"+ "Tarihler.txt";
 
             if (File.Exists(dosya_yolu))
             {
@@ -329,7 +329,7 @@ namespace YazGel_II_Proje__1
 
             TarihListesi tarihtemp = new TarihListesi();
 
-            string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\" + "Tarihler.txt";
+            string dosya_yolu = System.Windows.Forms.Application.StartupPath+"\\"  + "Tarihler.txt";
 
             if (File.Exists(dosya_yolu))
             {
@@ -405,7 +405,7 @@ namespace YazGel_II_Proje__1
 
             TarihListesi tarihtemp = new TarihListesi();
 
-            string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\" + "Tarihler.txt";
+            string dosya_yolu = System.Windows.Forms.Application.StartupPath +"\\" + "Tarihler.txt";
 
             if (File.Exists(dosya_yolu))
             {

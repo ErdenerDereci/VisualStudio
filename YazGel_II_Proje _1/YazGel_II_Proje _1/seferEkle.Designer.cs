@@ -193,6 +193,7 @@
             // 
             // nereye
             // 
+            this.nereye.BackColor = System.Drawing.Color.White;
             this.nereye.FormattingEnabled = true;
             this.nereye.Items.AddRange(new object[] {
             "Ankara",

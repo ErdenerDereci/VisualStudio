@@ -135,6 +135,7 @@
             this.label6.Size = new System.Drawing.Size(35, 13);
             this.label6.TabIndex = 9;
             this.label6.Text = "label6";
+            this.label6.Visible = false;
             // 
             // label7
             // 
@@ -144,6 +145,7 @@
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 10;
             this.label7.Text = "label7";
+            this.label7.Visible = false;
             // 
             // BiletKes
             // 

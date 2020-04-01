@@ -27,7 +27,7 @@ namespace YazGel_II_Proje__1
             else { 
             SeferListeyeAtClass listeyeAt = new SeferListeyeAtClass();
             SeferListesi temp = listeyeAt.seferListeyeAt("", tarih.Text);
-                string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\" + tarih.Text + ".txt";
+                string dosya_yolu = System.Windows.Forms.Application.StartupPath +"\\" + tarih.Text + ".txt";
 
                 temp.KaptanDuzenle(seferno.Text, kaptanText.Text).kaptan = kaptanText.Text;
                 File.Delete(dosya_yolu);

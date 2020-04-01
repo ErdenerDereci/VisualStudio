@@ -43,7 +43,7 @@ namespace YazGel_II_Proje__1
             string yolcuCinsiyeti = "";
             string durum = "";
 
-            string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\" + tarih + ".txt";
+            string dosya_yolu = System.Windows.Forms.Application.StartupPath +"\\" + tarih + ".txt";
 
             FileStream fs = new FileStream(dosya_yolu, FileMode.Open, FileAccess.Read);
 
@@ -112,7 +112,7 @@ namespace YazGel_II_Proje__1
             string kaptan = "";
 
 
-            string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\" + tarih_ + ".txt";
+            string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\"+tarih_ + ".txt";
             if (File.Exists(dosya_yolu))
             {
                 FileStream fs = new FileStream(dosya_yolu, FileMode.Open, FileAccess.Read);

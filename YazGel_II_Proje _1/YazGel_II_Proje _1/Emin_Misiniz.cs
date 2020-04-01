@@ -30,7 +30,7 @@ namespace YazGel_II_Proje__1
         }
         private void silineniYolla(string x)
         {
-            string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\"+"SilinenSeferNo.txt";
+            string dosya_yolu = System.Windows.Forms.Application.StartupPath+ "\\"+"SilinenSeferNo.txt";
             StreamWriter a = new StreamWriter(dosya_yolu, true);
             a.WriteLine(x);
             a.Close();
@@ -39,7 +39,7 @@ namespace YazGel_II_Proje__1
         {
             SeferListeyeAtClass listeyeAt = new SeferListeyeAtClass();
             SeferListesi temp = listeyeAt.seferListeyeAt("", tarih);
-            string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\"+tarih+".txt";
+            string dosya_yolu = System.Windows.Forms.Application.StartupPath +"\\"+ tarih+".txt";
             if (!temp.silinirMi(seferNo))
             {
                 MessageBox.Show("Sefer silinemez..Bilet kesilmiş.!!");
@@ -103,7 +103,7 @@ namespace YazGel_II_Proje__1
         private void tarihSil(string tarih)
         {
             List<string> liste = new List<string>();
-            string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\"+"Tarihler.txt";
+            string dosya_yolu = System.Windows.Forms.Application.StartupPath +"\\"+"Tarihler.txt";
             FileStream fs = new FileStream(dosya_yolu, FileMode.Open, FileAccess.Read);
 
             StreamReader sw = new StreamReader(fs);

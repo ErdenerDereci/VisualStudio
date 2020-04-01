@@ -27,7 +27,7 @@ namespace YazGel_II_Proje__1
         {
             SeferListeyeAtClass listeyeAt = new SeferListeyeAtClass();
             SeferListesi temp = listeyeAt.seferListeyeAt("", label10.Text);
-            string dosya_yolu = System.Windows.Forms.Application.StartupPath + "\\YazGelTxt\\" + label10.Text + ".txt";
+            string dosya_yolu = System.Windows.Forms.Application.StartupPath +"\\" + label10.Text + ".txt";
             temp.seferNoDugumCek(label6.Text).koltukBilgileri.dugumCek(Convert.ToInt32(label7.Text) - 1).yolcuAdi = "Boş";
             temp.seferNoDugumCek(label6.Text).koltukBilgileri.dugumCek(Convert.ToInt32(label7.Text) - 1).yolcuCinsiyeti = "Boş";
             temp.seferNoDugumCek(label6.Text).koltukBilgileri.dugumCek(Convert.ToInt32(label7.Text) - 1).durum = "Boş";
